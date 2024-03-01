@@ -1,6 +1,6 @@
 {
-  "name": "BlazorPages",
-  "short_name": "BlazorPages",
+  "name": "MudBlazor Pages",
+  "short_name": "MudBlazorPages",
   "id": "./",
   "start_url": "./",
   "display": "standalone",
