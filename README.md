@@ -1,9 +1,9 @@
-# MudBlazor Github Pages
+# MudBlazor GitHub Pages
 
 [![](../../workflows/gh-pages/badge.svg)](../../actions)
 
 
-This project is an example of using GitHub Actions to automatically deploy a .NET 8 [MudBlazor](https://mudblazor.com/) WebAssembly SPA (Single Page Application) to Github Pages. For a live demo, check the following link:
+This project is an example of using GitHub Actions to automatically deploy a .NET 8 [MudBlazor](https://mudblazor.com/) WebAssembly SPA (Single Page Application) to GitHub Pages. For a live demo, check the following link:
 
 https://mudblazorgithubpages.github.io
 
