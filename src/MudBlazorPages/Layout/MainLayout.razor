@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
 
 <MudThemeProvider />
 <MudPopoverProvider />
@@ -24,7 +25,7 @@
      <main>
         <div class="top-row px-4">
             <MudIconButton Icon="@Icons.Custom.Brands.MudBlazor" Style="color: white;" Href="https://mudblazor.com/" Target="_blank" />
-            <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Style="color: white;" Href="https://github.com/MudBlazor/MudBlazor/" Target="_blank" />
+            <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Style="color: white;" Href="@GetGitHubUrl()" Target="_blank" />
         </div>
 
         <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="my-2 pt-2">
@@ -38,4 +39,26 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+@code {
+    private string GetGitHubUrl()
+    {
+        const string DefaultGitHubUrl = "https://github.com/MudBlazorGitHubPages/mudblazorgithubpages.github.io";
 
+        var baseUrl = new Uri(NavigationManager.BaseUri);
+
+        if (baseUrl.Scheme == "https")
+        {
+            if (baseUrl.Host.EndsWith(".github.io"))
+            {
+
+                var organizationName = baseUrl.Host.Replace(".github.io", string.Empty);
+                var path = baseUrl.AbsolutePath.Replace("/", string.Empty);
+                var repositoryName = path != string.Empty ? path : $"{organizationName}.github.io";
+                    
+                return $"https://github.com/{organizationName}/{repositoryName}";
+            }
+        }
+
+        return DefaultGitHubUrl;
+    }
+}
