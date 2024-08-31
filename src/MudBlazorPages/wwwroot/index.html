@@ -5,7 +5,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MudBlazorPages</title>
-    <base href="/" />
+
+    <!-- Adapted from https://stackoverflow.com/a/69769086/8435941 -->
+    <script>
+        var baseTag = document.createElement("base");
+        var appRoot = "/CHANGEME/";
+        var path = document.location.pathname;
+        baseTag.href = (path.indexOf(appRoot) === 0 || path + "/" === appRoot) ? appRoot : "/";
+        document.head.appendChild(baseTag);
+    </script>
+
     <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link href="MudBlazorPages.styles.css" rel="stylesheet" />
