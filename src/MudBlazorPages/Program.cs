@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;
 using MudBlazorPages;
 using MudBlazorPages.Util;
+using Serilog;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -19,5 +20,10 @@ builder.Services.AddSingleton(appSettings ?? new());
 builder.Services.AddMudServices();
 
 builder.Services.AddBlazoredLocalStorage();
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Verbose()
+    .WriteTo.BrowserConsole()
+    .CreateLogger();
 
 await builder.Build().RunAsync();
