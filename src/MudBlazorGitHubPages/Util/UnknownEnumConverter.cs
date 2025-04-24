@@ -1,8 +1,8 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
-using MudBlazorPages.Util.Generic;
+using MudBlazorGitHubPages.Util.Generic;
 
-namespace MudBlazorPages.Util;
+namespace MudBlazorGitHubPages.Util;
 
 /// <summary>
 ///     Copied from https://gaevoy.com/2023/09/26/dotnet-serialization-unknown-enums-handling-api.html
@@ -18,6 +18,6 @@ public class UnknownEnumConverter : JsonConverterFactory
     {
         var underlyingConverter = _underlying.CreateConverter(enumType, options);
         var converterType = typeof(UnknownEnumConverter<>).MakeGenericType(enumType);
-        return (JsonConverter)Activator.CreateInstance(converterType, underlyingConverter);
+        return (JsonConverter)Activator.CreateInstance(converterType, underlyingConverter)!;
     }
 }
