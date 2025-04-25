@@ -1,10 +1,13 @@
-﻿@inherits LayoutComponentBase
+﻿@using MudBlazorGitHubPages.Components
+@inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
 
 <MudThemeProvider />
 <MudPopoverProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
+
+<OverlayLoader />
 
 <div class="page mud-layout">
 
