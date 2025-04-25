@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using MudBlazorGitHubPages.Util;
+using System.Text.Json.Serialization;
 
 namespace MudBlazorGitHubPages;
 
@@ -8,7 +9,7 @@ public enum ExampleEnum
     FirstValue = 1,
 }
 
-public class AppSettings
+public class ClientSettings
 {
     [JsonPropertyName("stringValue")]
     [ConfigurationKeyName("stringValue")]   
@@ -28,5 +29,6 @@ public class AppSettings
     /// </summary>
     [JsonPropertyName("nonexistentEnumValue")]
     [ConfigurationKeyName("nonexistentEnumValue")]
+    [JsonConverter(typeof(UnknownEnumConverter))]
     public ExampleEnum NonexistentEnumValue { get; set; }
 }
