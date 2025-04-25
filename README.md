@@ -5,7 +5,7 @@
 
 This project is an example of using GitHub Actions to automatically deploy a .NET 9 [MudBlazor](https://mudblazor.com/) WebAssembly SPA (Single Page Application) to GitHub Pages. For a live demo, check the following link:
 
-https://mudblazorgithubpages.github.io
+https://theotherstuff.github.io/MudBlazorGitHubPages
 
 Microsoft Docs already contains a [general overview](https://learn.microsoft.com/en-us/aspnet/core/blazor/host-and-deploy/webassembly?view=aspnetcore-8.0#github-pages)
 of the steps needed for a successful deploy.

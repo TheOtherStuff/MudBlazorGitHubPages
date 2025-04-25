@@ -1,0 +1,18 @@
+﻿<MudOverlay Visible="@(!_pageLoaded)" DarkBackground="true" Absolute="false">
+    <MudProgressCircular Color="Color.Secondary" Indeterminate="true" />
+</MudOverlay>
+
+@code{
+    private bool _pageLoaded;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (_pageLoaded)
+        {
+            return;
+        }
+        
+        _pageLoaded = true;
+        _ = this.InvokeAsync(this.StateHasChanged);
+    }
+}
