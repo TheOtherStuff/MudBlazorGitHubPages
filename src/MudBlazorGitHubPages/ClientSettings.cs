@@ -29,6 +29,5 @@ public class ClientSettings
     /// </summary>
     [JsonPropertyName("nonexistentEnumValue")]
     [ConfigurationKeyName("nonexistentEnumValue")]
-    [JsonConverter(typeof(UnknownEnumConverter))]
     public ExampleEnum NonexistentEnumValue { get; set; }
 }
