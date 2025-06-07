@@ -1,28 +1,28 @@
 ﻿@* This component was copied from https://gist.github.com/EngstromJimmy/e51b8166cf2fb61f8760c5ea20d575af *@
 
 @typeparam T
-@inject PersistentComponentState _persistentComponentState
+@inject PersistentComponentState PersistentComponentState
 @implements IDisposable
 
 @ChildContent(_state)
 
 @code {
     [Parameter, EditorRequired]
-    public RenderFragment<T> ChildContent { get; set; }
+    public required RenderFragment<T> ChildContent { get; set; }
 
     [Parameter, EditorRequired]
-    public Func<Task<T>> GetState { get; set; }
+    public required Func<Task<T>> GetState { get; set; }
 
     [Parameter, EditorRequired]
-    public string StateKey { get; set; }
+    public required string StateKey { get; set; }
 
-    private T _state;
+    private T _state = default!;
     private PersistingComponentStateSubscription _subscription;
     protected override async Task OnInitializedAsync()
     {
-        _subscription = _persistentComponentState.RegisterOnPersisting(SaveState);
+        _subscription = PersistentComponentState.RegisterOnPersisting(SaveState);
 
-        if (_persistentComponentState.TryTakeFromJson<T>(StateKey, out var storedState) && storedState != null)
+        if (PersistentComponentState.TryTakeFromJson<T>(StateKey, out var storedState) && storedState != null)
         {
             _state = storedState;
         }
@@ -36,7 +36,7 @@
 
     private Task SaveState()
     {
-        _persistentComponentState.PersistAsJson(StateKey, _state);
+        PersistentComponentState.PersistAsJson(StateKey, _state);
         return Task.CompletedTask;
     }
 
